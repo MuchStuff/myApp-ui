@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    
+    <div *ngIf="!loggedIn" class="text-center">
+        <p>Fake weather forecast available only for logged users :)</p>
+    </div>
+
+    <div *ngIf="loggedIn" class="container">
+        <div *ngIf="weatherForecast.length == 0">
+            <p>Welcome! Do you want to see the fake weather forecast?</p>
+            <button (click)="getForecast()" class="btn btn-success">Yes</button>
+        </div>
+        <p *ngIf="weatherForecast.length > 0">These are the predicted fake weather forecast:</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div *ngFor="let row of weatherForecast">
+                    {{row.date}}, {{row.summary}}, {{row.temperatureC}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
